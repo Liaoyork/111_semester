@@ -8,6 +8,7 @@ using namespace std;
 
 int Role::attacking() {
     cout << "error!" << endl;
+    return 0;
 }
 
 void Role::subHP_V(int a) {
