@@ -10,4 +10,5 @@ Commodity::Commodity(string name, int price) {
 }
 Commodity::~Commodity() {
     delete score;
+    delete price;
 }

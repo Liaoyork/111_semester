@@ -1,10 +1,14 @@
-All:
-	g++ Healthy.o Food.o Commodity.o -o 1
-Healthy.cpp: Health.o	
-	g++ Healthy.cpp -c Health.o
+All: Healthy.o Food.o Commodity.o main.o
+	g++ Healthy.o Food.o Commodity.o main.o -o 1
+Healthy.o: Healthy.cpp	
+	g++ Healthy.cpp -c 
 
-Food.cpp: Health.o	
-	g++ Food.cpp -c Food.o
+Food.o: Food.cpp	
+	g++ Food.cpp -c 
 
-Commodity.cpp: Commodity.o
-	g++ Commodity.cpp -c Commodity.o
+Commodity.o: Commodity.cpp
+	g++ Commodity.cpp -c 
+main.o: main.cpp
+	g++ main.cpp -c
+clean:
+	rm *.o
