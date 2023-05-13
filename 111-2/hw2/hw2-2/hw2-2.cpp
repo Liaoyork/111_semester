@@ -44,6 +44,7 @@ void Role::subhp(int spec, Role* player) {
             // cout << "0 demage" << endl;
             return;
         }
+        hp = hp - (player->attack - defense);
     } else if (player->getPro() == 'W') {
         isDefence = false;
         if (player->attack + spec - defense <= 0) {

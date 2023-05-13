@@ -78,17 +78,14 @@ int main() {
     }
     Role *Main_player, *Sec_player;
     int round = 1;
-    bool PL1_first;
     int t = 0;
     if (players.at(0)->getSpeed() > players.at(1)->getSpeed()) {
         Main_player = players.at(0);
         Sec_player = players.at(1);
-        PL1_first = true;
         t = 2;
     } else {
         Main_player = players.at(1);
         Sec_player = players.at(0);
-        PL1_first = false;
         t = 1;
     }
     while (1) {
