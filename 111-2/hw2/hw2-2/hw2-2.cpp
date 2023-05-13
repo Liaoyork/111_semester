@@ -23,6 +23,9 @@ Role::Role(int hp, int attack, int defense, int speed, char Pro) : oriHP(hp) {
     this->Pro = Pro;
     isDefence = false;
 }
+Role::~Role() {
+    ;
+}
 void Role::subhp(int spec, Role* player) {
     if (!isDefence) {
         hp -= spec;
@@ -33,7 +36,6 @@ void Role::subhp(int spec, Role* player) {
         isDefence = false;
         hp -= spec;
         if (player->attack - defense <= 0) {
-            // cout << "0 demage" << endl;
             return;
         }
         hp = hp - (player->attack - defense);
@@ -41,14 +43,12 @@ void Role::subhp(int spec, Role* player) {
         isDefence = false;
         hp -= spec;
         if (player->attack - defense <= 0) {
-            // cout << "0 demage" << endl;
             return;
         }
         hp = hp - (player->attack - defense);
     } else if (player->getPro() == 'W') {
         isDefence = false;
         if (player->attack + spec - defense <= 0) {
-            // cout << "0 demage" << endl;
             return;
         }
         hp = hp - (player->attack + spec - defense);
@@ -59,9 +59,6 @@ int Role::gethp() {
 }
 char Role::getPro() {
     return Pro;
-}
-int Role::getAttack() {
-    return attack;
 }
 void Role::addhp(int a) {
     hp += a;
@@ -88,6 +85,10 @@ int Mage::attacking() {
 Warrior::Warrior(int hp, int attack, int defence, int speed, float critRate, char Pro) : Role(hp, attack, defence, speed, Pro) {
     this->critRate = critRate;
 }
+
+int Role::getAttack() {
+    return attack;
+}
 int Warrior::attacking() {
     if (rand() % 100 < 100 * critRate)
         return getAttack();
@@ -98,9 +99,6 @@ Vampire::Vampire(int hp, int attack, int defence, int speed, float lifeSteal, ch
     this->lifeSteal = lifeSteal;
 }
 
-void Vampire::setDefense() {
-    Role::setDefense();
-}
 int Vampire::attacking() {
     Role::addhp(lifeSteal * oriHP);
     return lifeSteal * oriHP;
