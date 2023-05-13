@@ -11,6 +11,13 @@ Food::Food(int* car, int* pro, int* fat, string name, int price) : Commodity(nam
     this->fat_value = fat;
     cal_score();
 }
+Food::~Food(){
+    delete price;
+    delete score;
+    delete car_value;
+    delete pro_value;
+    delete fat_value;
+}
 void Food::cal_score() {
     score = new double(*pro_value / (double)*price);
 }
