@@ -10,6 +10,7 @@ class Healthy : public Commodity {
 
    public:
     Healthy(string*, int*, int, string, int);
+    ~Healthy();
     void cal_score();
     void show_spec();
 };

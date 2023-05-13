@@ -10,6 +10,7 @@ class Food : public Commodity {
 
    public:
     Food(int*, int*, int*, string, int);
+    ~Food();
     void cal_score();
     void show_spec();
 };

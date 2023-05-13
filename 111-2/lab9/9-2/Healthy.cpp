@@ -10,12 +10,17 @@ Healthy::Healthy(string* Mn, int* Mi, int arr, string na, int pr) : Commodity(na
     arr_length = arr;
     cal_score();
 }
+Healthy::~Healthy(){
+    delete name_arr;
+    delete value_arr;
+    delete price;
+    delete score;
+}
 void Healthy::cal_score() {
     double k = 0;
     for (int i = 0; i < arr_length; i++) {
         k += value_arr[i];
     }
-    double m;
     score = new double((k / *price));
 }
 void Healthy::show_spec() {

@@ -19,7 +19,7 @@ int main() {
     int count = 0;
     while (in >> ss) {
         string name;
-        int price, amount;
+        int price;
 
         string *Mname = NULL;
         int *Min = NULL;
@@ -62,7 +62,6 @@ int main() {
     sort(somethings.begin(), somethings.end(), sortScore);
     for (int i = 0; i < (int)somethings.size(); i++) {
         somethings[i]->show_spec();
-        delete somethings[i];
     }
     cout << "=======================================" << endl;
 }
