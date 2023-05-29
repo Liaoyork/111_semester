@@ -22,7 +22,6 @@ class Calculator {
 
     static string expression;
 
-
    public:
     // Constructor, setup views
     Calculator();
