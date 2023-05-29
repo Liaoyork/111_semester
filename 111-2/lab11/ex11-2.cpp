@@ -9,7 +9,30 @@ using namespace std;
 map<string, int> ori_num;
 vector<string> ans;
 
-bool rec(int start, int end, string ss, map<string, int> dic) {
+bool rec(string ss, map<string, int> &dic) {
+    if (dic.find(ss) != dic.end() && dic[ss] > 0) {
+        dic[ss] -= 1;
+        ans.push_back(ss);
+        // for (auto &x : dic){
+        //     string w = x.first;
+        //     if ()
+        // }
+        return true;
+    }
+
+    int len = ss.size();
+
+    for (int i = len - 1; i >= 1; i--) {
+        string s1 = ss.substr(0, i);
+        string s2 = ss.substr(i);
+        if (dic.find(s1) == dic.end() || dic[s1] == 0) continue;
+        dic[s1] -= 1;
+        ans.push_back(s1);
+        if (rec(s2, dic)) return true;
+        dic[s1] += 1;
+        ans.pop_back();
+    }
+    return false;
 }
 bool sortStr(string &s1, string &s2) {
     return s1 > s2;
@@ -20,16 +43,16 @@ int main(int argc, char *argv[]) {
     string ss;
     int amo;
     while (in >> ss >> amo) {
-        dictionary.insert(pair<string, int>(ss, 0));
+        dictionary.insert(pair<string, int>(ss, amo));
         ori_num.insert(pair<string, int>(ss, amo));
     }
     string testcase = argv[2];
-    if (rec(0, 0, testcase, dictionary)) {
+    if (rec(testcase, dictionary)) {
         cout << "True\n";
-        for (auto p = dictionary.begin(); p != dictionary.end(); p++) {
-            cout << p->first << ": " << p->second << "(" << ori_num[p->first] << "->" << ori_num[p->first] - p->second << ")\n";
+        for (auto &n : dictionary) {
+            string p = n.first;
+            cout << p << ": " << ori_num[p] - dictionary[p] << "(" << ori_num[p] << "->" << dictionary[p] << ")\n";
         }
-        sort(ans.begin(), ans.end(), sortStr);
         for (int i = 0; i < (int)ans.size(); i++) {
             cout << ans.at(i) << " ";
         }
