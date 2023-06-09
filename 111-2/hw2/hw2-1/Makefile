@@ -1,17 +1,16 @@
-All:Spotify
-Spotify:Spotify.o User.o Song.o Playlist.o main.o
-	g++ Spotify.o User.o Playlist.o Song.o main.o -o Spotify
-Spotify.o:Spotify.cpp
+all: hw2_1
+hw2_1:Spotify.o User.o Song.o Playlist.o main.o
+	g++ Spotify.o User.o Playlist.o Song.o main.o -o hw2_1
+Spotify.o:Spotify.h Playlist.h User.h Song.h Spotify.cpp
 	g++ -c Spotify.cpp
-User.o:User.cpp
+User.o:Spotify.h Playlist.h User.h Song.h User.cpp
 	g++ -c User.cpp
-Playlist.o:Playlist.cpp
+Playlist.o:Spotify.h Playlist.h User.h Song.h Playlist.cpp
 	g++ -c Playlist.cpp
-Song.o:Song.cpp
+Song.o:Spotify.h Playlist.h User.h Song.h Song.cpp
 	g++ -c Song.cpp
-main.o:main.cpp
+main.o:Spotify.h Playlist.h User.h Song.h main.cpp
 	g++ -c main.cpp
 clean:
-	rm *.o
-run:
-	./Spotify music.txt
+	rm -rf *.o hw2_1
+

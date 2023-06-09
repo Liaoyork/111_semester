@@ -80,4 +80,9 @@ Playlist::Playlist(string name, const vector<const Song *> &songs) : songs(songs
     curr_song_index = 0;
 }
 Playlist::~Playlist() {
+    /*
+    for (int i = 0 ; i < (int)song_in_list.size();i++){
+        delete song_in_list[i];
+    }
+    */
 }
