@@ -45,4 +45,12 @@ User::User(string name, string passwd, vector<const Song *> &songs) : songs(song
     curr_list = NULL;
 }
 User::~User() {
+    for (int i = 0 ; i < (int)all_list.size(); i++){
+        delete all_list[i];
+    }
+    /*
+    for (int i = 0; i < (int)songs.size(); i++){
+        delete songs[i];
+    }
+    */
 }
