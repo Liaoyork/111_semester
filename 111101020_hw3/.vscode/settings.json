@@ -1,7 +1,0 @@
-{
-    "C_Cpp.errorSquiggles": "",
-    "files.associations": {
-        "*.tcc": "cpp",
-        "iosfwd": "cpp"
-    }
-}

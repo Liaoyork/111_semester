@@ -1,2 +1,0 @@
-mystring <- "hello"
-print(mystring)
